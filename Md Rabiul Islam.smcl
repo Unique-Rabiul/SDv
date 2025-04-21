@@ -1,0 +1,221 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\Md Rabiul Islam.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}16 May 2023, 14:39:26
+
+{com}. {txt}*(8 variables, 39 observations pasted into data editor)
+{com}
+. label variable educ "years of schooling"
+
+. label variable cigpric "no cigs smoked per day"
+
+. label define white 0 "non-white" 1 "white"
+
+. label values white white
+
+. label variable age "age in years"
+
+. label variable income "annual income"
+
+. label variable cigpric "states cig price per day"
+
+. label variable cigs "no of cigs smoked per day"
+
+. label define restaurn 0 "other" 1 "restaurant impose smoke restrictions"
+
+. label values restaurn restaurn
+
+. label define married 0 "unmarried" 1 "married"
+
+. label values married married
+
+. *(b)*
+
+. ttest educ, by( married)
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+unmarrie {c |}{res}{col 12}     27{col 22} 12.03704{col 34} .6298181{col 46} 3.272631{col 58} 10.74243{col 70} 13.33165
+ {txt}married {c |}{res}{col 12}     12{col 22} 14.08333{col 34} .7608641{col 46}  2.63571{col 58} 12.40868{col 70} 15.75798
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     39{col 22} 12.66667{col 34} .5127699{col 46} 3.202247{col 58} 11.62862{col 70} 13.70472
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-2.046296{col 34} 1.074483{col 58}-4.223405{col 70} .1308127
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}unmarrie{txt}) - mean({res}married{txt})                         t = {res} -1.9044
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      37
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0323         {txt}Pr(|T| > |t|) = {res}0.0646          {txt}Pr(T > t) = {res}0.9677
+
+{com}. *(c)*
+
+. sum income cigpric educ, detail
+
+                        {txt}annual income
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}     5500           5500
+{txt} 5%    {res}     6500           6500
+{txt}10%    {res}     8500           8500       {txt}Obs         {res}         39
+{txt}25%    {res}    12500           8500       {txt}Sum of Wgt. {res}         39
+
+{txt}50%    {res}    20000                      {txt}Mean          {res} 20769.23
+                        {txt}Largest       Std. Dev.     {res} 7859.662
+{txt}75%    {res}    30000          30000
+{txt}90%    {res}    30000          30000       {txt}Variance      {res} 6.18e+07
+{txt}95%    {res}    30000          30000       {txt}Skewness      {res}-.2534544
+{txt}99%    {res}    30000          30000       {txt}Kurtosis      {res}  1.99279
+
+                  {txt}states cig price per day
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}   57.664         57.664
+{txt} 5%    {res}   57.883         57.883
+{txt}10%    {res}   57.883         57.883       {txt}Obs         {res}         39
+{txt}25%    {res}    58.32         57.883       {txt}Sum of Wgt. {res}         39
+
+{txt}50%    {res}   60.324                      {txt}Mean          {res}  60.0741
+                        {txt}Largest       Std. Dev.     {res} 1.516009
+{txt}75%    {res}   61.322         62.012
+{txt}90%    {res}   62.012         62.012       {txt}Variance      {res} 2.298282
+{txt}95%    {res}   62.089         62.089       {txt}Skewness      {res}-.2879802
+{txt}99%    {res}   62.489         62.489       {txt}Kurtosis      {res} 1.746414
+
+                     {txt}years of schooling
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}        6              6
+{txt} 5%    {res}        6              6
+{txt}10%    {res}       10              6       {txt}Obs         {res}         39
+{txt}25%    {res}       10             10       {txt}Sum of Wgt. {res}         39
+
+{txt}50%    {res}       12                      {txt}Mean          {res} 12.66667
+                        {txt}Largest       Std. Dev.     {res} 3.202247
+{txt}75%    {res}       16             18
+{txt}90%    {res}       18             18       {txt}Variance      {res} 10.25439
+{txt}95%    {res}       18             18       {txt}Skewness      {res}-.1521375
+{txt}99%    {res}       18             18       {txt}Kurtosis      {res} 2.663818
+
+{com}. *Answer 5*
+
+. *(a)*
+
+. sum
+
+{txt}    Variable {c |}       Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 56}
+{space 8}educ {c |}{res}        39    12.66667    3.202247          6         18
+{txt}{space 5}cigpric {c |}{res}        39     60.0741    1.516009     57.664     62.489
+{txt}{space 7}white {c |}{res}        39    .9487179    .2234559          0          1
+{txt}{space 9}age {c |}{res}        39          42    16.35623         17         86
+{txt}{space 6}income {c |}{res}        39    20769.23    7859.662       5500      30000
+{txt}{hline 13}{c +}{hline 56}
+{space 8}cigs {c |}{res}        39    6.205128    11.21601          0         35
+{txt}{space 4}restaurn {c |}{res}        39    .4102564    .4983102          0          1
+{txt}{space 5}married {c |}{res}        39    .3076923    .4675719          0          1
+
+{com}. bar income
+{err}unrecognized command:  bar
+{txt}{search r(199):r(199);}
+
+{com}. twoway (bar income, sort)
+{err}too few variables specified
+{txt}{search r(102):r(102);}
+
+{com}. *(b)*
+
+. graph bar (sum) income
+{res}
+{com}. graph save Graph "C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\1803064.gph"
+{res}{txt}(file C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\1803064.gph saved)
+
+{com}. *(c)*
+
+. save "C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\1803064.dta"
+{txt}file C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\1803064.dta saved
+
+{com}. *Answer 6*
+
+. *(a)*
+
+. correlate educ cigpric white age income cigs restaurn married
+{txt}(obs=39)
+
+             {c |}     educ  cigpric    white      age   income     cigs restaurn  married
+{hline 13}{c +}{hline 72}
+        educ {c |}{res}   1.0000
+     {txt}cigpric {c |}{res}   0.2551   1.0000
+       {txt}white {c |}{res}  -0.0245  -0.1164   1.0000
+         {txt}age {c |}{res}  -0.4494   0.0368  -0.1080   1.0000
+      {txt}income {c |}{res}   0.3960  -0.1341  -0.1268  -0.3202   1.0000
+        {txt}cigs {c |}{res}  -0.2523   0.0810  -0.0797   0.0153  -0.0317   1.0000
+    {txt}restaurn {c |}{res}   0.2281   0.7896  -0.0424   0.0710  -0.0760   0.0458   1.0000
+     {txt}married {c |}{res}   0.2988  -0.1637   0.1550  -0.1755  -0.0267  -0.0726  -0.2172   1.0000
+
+
+{com}. *(b)*
+
+. gen age_square=  age* age
+
+. regress cigs educ age age_square married income restaurn white
+
+      {txt}Source {c |}       SS       df       MS              Number of obs ={res}      39
+{txt}{hline 13}{char +}{hline 30}           F(  7,    31) ={res}    0.66
+    {txt}   Model {char |} {res}  620.89638     7  88.6994828           {txt}Prob > F      = {res} 0.7027
+    {txt}Residual {char |} {res} 4159.46259    31  134.176213           {txt}R-squared     = {res} 0.1299
+{txt}{hline 13}{char +}{hline 30}           Adj R-squared = {res}-0.0666
+    {txt}   Total {char |} {res} 4780.35897    38   125.79892           {txt}Root MSE      = {res} 11.583
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        cigs{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-1.526523{col 26}{space 2} .7934715{col 37}{space 1}   -1.92{col 46}{space 3}0.064{col 54}{space 4}-3.144819{col 67}{space 3} .0917728
+{txt}{space 9}age {c |}{col 14}{res}{space 2} .3836861{col 26}{space 2} .6271044{col 37}{space 1}    0.61{col 46}{space 3}0.545{col 54}{space 4}-.8953017{col 67}{space 3} 1.662674
+{txt}{space 2}age_square {c |}{col 14}{res}{space 2}-.0051335{col 26}{space 2} .0064127{col 37}{space 1}   -0.80{col 46}{space 3}0.429{col 54}{space 4}-.0182122{col 67}{space 3} .0079452
+{txt}{space 5}married {c |}{col 14}{res}{space 2} 1.585576{col 26}{space 2} 4.628228{col 37}{space 1}    0.34{col 46}{space 3}0.734{col 54}{space 4}-7.853756{col 67}{space 3} 11.02491
+{txt}{space 6}income {c |}{col 14}{res}{space 2} .0000604{col 26}{space 2} .0002901{col 37}{space 1}    0.21{col 46}{space 3}0.836{col 54}{space 4}-.0005312{col 67}{space 3}  .000652
+{txt}{space 4}restaurn {c |}{col 14}{res}{space 2} 3.699935{col 26}{space 2} 4.266828{col 37}{space 1}    0.87{col 46}{space 3}0.393{col 54}{space 4}-5.002319{col 67}{space 3} 12.40219
+{txt}{space 7}white {c |}{col 14}{res}{space 2}-3.712962{col 26}{space 2} 8.843423{col 37}{space 1}   -0.42{col 46}{space 3}0.677{col 54}{space 4}-21.74924{col 67}{space 3} 14.32332
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  20.0818{col 26}{space 2} 20.06658{col 37}{space 1}    1.00{col 46}{space 3}0.325{col 54}{space 4}-20.84427{col 67}{space 3} 61.00786
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. *(C)*
+
+. tabulate married, summarize( married)
+
+            {txt}{c |}         Summary of married
+    married {c |}        Mean   Std. Dev.       Freq.
+{hline 12}{c +}{hline 36}
+  unmarried {c |}  {res}         0           0          27
+  {txt}  married {c |}  {res}         1           0          12
+{txt}{hline 12}{c +}{hline 36}
+      Total {c |}  {res} .30769231    .4675719          39
+
+{com}. save "C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\1803064.dta", replace
+{txt}file C:\Users\User\Desktop\ECO 4106_1803064 Final Examination\1803064.dta saved
+
+{com}. graph bar (mean) income
+{res}
+{com}. tabulate  cigs, summarize( married)
+
+ {txt}no of cigs {c |}
+ smoked per {c |}         Summary of married
+        day {c |}        Mean   Std. Dev.       Freq.
+{hline 12}{c +}{hline 36}
+          0 {c |}  {res} .33333333   .48038446          27
+  {txt}        2 {c |}  {res}         0           0           1
+  {txt}        3 {c |}  {res}         0           0           1
+  {txt}       10 {c |}  {res}         1           0           1
+  {txt}       12 {c |}  {res}         0           0           1
+  {txt}       20 {c |}  {res} .33333333   .57735027           3
+  {txt}       30 {c |}  {res}       .25          .5           4
+  {txt}       35 {c |}  {res}         0           0           1
+{txt}{hline 12}{c +}{hline 36}
+      Total {c |}  {res} .30769231    .4675719          39
+
+{com}. exit, clear
